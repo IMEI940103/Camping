@@ -1,0 +1,32 @@
+<!-- header.html header영역의 화면구성 -->
+<!DOCTYPE html>
+<!-- Thymeleaf 선언 / headerFragment 임을 선언-->
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:fragment="HeaderFragment">
+
+  <section id="header">
+    <div class="container">
+      <div class="align">
+        <div class="company_logo">
+          <a th:href="@{/index}">
+            <img th:src="@{/image/yolo_company/logo-b.png}" alt="회사로고" class="logo" />
+          </a>
+        </div>
+        <ul class="navbar">
+          <li th:if="${user_dto == null}"><a href="">로그인</a></li>
+
+          <th:block>
+          <!--String type=session.getAttribute("user_type").toString();-->
+
+          <li th:if="${type == '2'}" ><a href="">캠핑장관리</a></li>
+
+          <li><a href="">예약확인</a></li>
+          <li><a href="">마이페이지</a></li>
+          <li><a href="">로그아웃</a></li>
+
+          </th:block>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</html>
