@@ -1,0 +1,262 @@
+<!-- index.html 메인화면. -->
+<!DOCTYPE html>
+    <html lang="ko"
+          xmlns:th="http://www.thymeleaf.org"
+          xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+          layout:decorate="~{common/layout/defaultLayout}"
+          layout:fragment="Content"
+    >
+    <head>
+        <title th:text="${camping_name}"></title>
+        <!-- inline CSS 영역-->
+        <link th:inline="css" th:href="@{/css/search/choice_camping.css}" rel="stylesheet" />
+
+        <!-- inline JS 영역-->
+        <script th:inline="javascript" type="text/javascript"> </script>
+    </head>
+
+    <body>
+
+        <section class="container" id="main-content">
+            <div class="border">
+                <div class="content-image">
+                    <div class="main-image">
+                        <img th:src="@{/image/camping_product/01.jpg}" id="preview-image" />
+                    </div>
+                    <ul>
+                        <!--
+                        <li th:each="camping_img : ${camping_info.camping_img}">
+                          <img th:src="@{/image/camping/}+${imgs[x]}" />
+                        </li>
+                        -->
+                    </ul>
+                </div>
+                <div class="content-text">
+
+                    <h3 class="content-text-title">캠핑장명</h3>
+                    <span class="address"><i class="fas fa-map-marked-alt"></i>주소칸</span>
+                    <span class="number"><i class="fas fa-phone-alt"></i> 연락처번호 </span>
+                    <p class="comment"> 간단 소개글란</p>
+                    <div class="contents02">
+                        <div class="info">
+                            <ul class="info-icon row">
+                                <li>운영형태</li>
+                                <li>
+                                    <ul class="card-text row">
+                                        <li>
+                                            <img th:src="@{/icon/ico_wifi.png}" />
+                                        </li>
+                                        <li>
+                                            <img th:src="@{/icon/ico_mart.png}" />
+                                        </li>
+                                        <li>
+                                            <img th:src="@{/icon/ico_hotwater.png}" />
+                                        </li>
+                                        <li>
+                                            <img th:src="@{/icon/ico_pool.png}" />
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="info-icon row">
+                                <li>시설정보</li>
+                                <li>
+                                    <ul class="card-text row">
+                                        <li>
+                                            <img th:src="@{/icon/ico_wifi.png}" />
+                                        </li>
+                                        <li>
+                                            <img th:src="@{/icon/ico_mart.png}" />
+                                        </li>
+                                        <li>
+                                            <img th:src="@{/icon/ico_hotwater.png}" />
+                                        </li>
+                                        <li>
+                                            <img th:src="@{/icon/ico_pool.png}" />
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="info-icon row">
+                                <li>이용가능</li>
+                                <li>
+                                    <ul class="card-text row">
+                                        <li>
+                                            <img th:src="@{/icon/ico_wifi.png}" />
+                                        </li>
+                                        <li>
+                                            <img th:src="@{/icon/ico_mart.png}" />
+                                        </li>
+                                        <li>
+                                            <img th:src="@{/icon/ico_hotwater.png}" />
+                                        </li>
+                                        <li>
+                                            <img th:src="@{/icon/ico_pool.png}" />
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="info-icon row">
+                                <li>레져(즐길거리)</li>
+                                <li>
+                                    <ul class="card-text row">
+                                        <li>
+                                            <img th:src="@{/icon/ico_wifi.png}" />
+                                        </li>
+                                        <li>
+                                            <img th:src="@{/icon/ico_mart.png}" />
+                                        </li>
+                                        <li>
+                                            <img th:src="@{/icon/ico_hotwater.png}" />
+                                        </li>
+                                        <li>
+                                            <img th:src="@{/icon/ico_pool.png}" />
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" id="sub-content">
+                <div class="tapmenu">
+                    <label>객실안내/예약</label>
+                </div>
+                <div class="tap-contents">
+                    <div class="contents01">
+                        <div class="room">
+                            <div class="card col-md-12" th:each="room_info : ${List_room}">
+                                <div class="row g-0">
+                                    <input type="radio" id="subimage-room1" name="main-room-img"/>
+                                    <div class="col-md-4 main-image">
+                                        <label for="subimage-room1" class="main-room">
+                                            <img th:src="@{/image/camping/}" class="img-fluid rounded-start" alt="...">
+                                        </label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <p class="card-text">
+                                                <span class="card-title" th:text="${room_info.room_name}"></span>
+                                                <span th:text="${room_info.room_price}"></span>원
+                                            </p>
+                                            <p class="card-text">
+                                            <p>기본정보 : [[${room_info.minimum_people}]]인기준 최대 [[${room_info.maximum_people}]]인</p>
+                                            <p>입실시간 : [[${room_info.checkin_time}]] 퇴실시간 : [[${room_info.checkout_time}]] </p>
+                                            <p th:utext="${room_info.room_introduction}"></p>
+                                            </p>
+                                            <input type="button"
+                                                   th:choise="${room_info.room_no}"
+                                                   th:onclick="pay(this.getAttribute('choise'))"
+                                                   class="btn col-12" value="예약하기"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <section class="container" id="review">
+            <div class="contents03">
+                <div class="box">
+                    <div class="star-box">
+                        <span class="star">★★★★★<span style="width:100%;" >★★★★★</span></span>
+                        <!--
+                        <input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+                        <script>
+                          const drawStar = (target) => {document.querySelector(`.star span`).style.width = `${target.value * 10}%`;}
+                        </script>
+                        -->
+                        <p>평점 <span>10</span> 전체리뷰 <span>05</span></p>
+                    </div>
+                </div>
+                <div class="review-box">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">디럭스 A - <span>id1234</span></h5>
+                            <h6 class="card-subtitle col-8 text-muted">
+                                <span><span class="star">★★★★★<span style="width:100%;" >★★★★★</span></span>10</span>
+                                <span>2022-05-01</span>
+                            </h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                        <div class="review-img-box">
+                            <img th:src="@{/image/reviewsample01.jpeg}" />
+                            <img th:src="@{/image/reviewsample02.jpeg}" />
+                            <img th:src="@{/image/reviewsample03.jpeg}" />
+                            <img th:src="@{/image/reviewsample04.jpg}" />
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">디럭스 A - <span>id1234</span></h5>
+                            <h6 class="card-subtitle col-6 text-muted">
+                                <span><span class="star">★★★★★<span style="width:100%;" >★★★★★</span></span>10.0</span>
+                                <span>2022-05-01</span>
+                            </h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                        <div class="review-img-box">
+                            <img th:src="@{/image/reviewsample01.jpeg}" />
+                            <img th:src="@{/image/reviewsample02.jpeg}" />
+                            <img th:src="@{/image/reviewsample03.jpeg}" />
+                            <img th:src="@{/image/reviewsample04.jpg}" />
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">디럭스 A - <span>id1234</span></h5>
+                            <h6 class="card-subtitle col-6 text-muted">
+                                <span><span class="star">★★★★★<span style="width:100%;" >★★★★★</span></span>10.0</span>
+                                <span>2022-05-01</span>
+                            </h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                        <div class="review-img-box">
+                            <img th:src="@{/image/reviewsample01.jpeg}" />
+                            <img th:src="@{/image/reviewsample04.jpg}" />
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">디럭스 A - <span>id1234</span></h5>
+                            <h6 class="card-subtitle col-6 text-muted">
+                                <span><span class="star">★★★★★<span style="width:100%;" >★★★★★</span></span>10.0</span>
+                                <span>2022-05-01</span>
+                            </h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                        <div class="review-img-box">
+                            <img th:src="@{/image/reviewsample02.jpeg}" />
+                            <img th:src="@{/image/reviewsample03.jpeg}" />
+                            <img th:src="@{/image/reviewsample04.jpg}" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="paging">
+                    <a href="#" class="btn btn-lg"><i class="fas fa-angle-left"></i></a>
+                    <ul class="page-count">
+                        <li class="btn-lg btn-success">1</li>
+                        <li class="btn-lg">2</li>
+                        <li class="btn-lg">3</li>
+                        <li class="btn-lg">4</li>
+                        <li class="btn-lg">5</li>
+                    </ul>
+                    <a href="#" class="btn btn-lg"><i class="fas fa-angle-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+    </body>
+</html>

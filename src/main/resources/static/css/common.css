@@ -1,0 +1,122 @@
+/*
+
+    모든페이지에 공통적으로 들어가는  css파일
+
+*/
+@font-face {
+    font-family: 'noto';
+    src: url('../font/Noto_Sans_KR/NotoSansKR-Light.otf') format('truetype');
+}
+@font-face {
+    font-family: 'noto-m';
+    src: url('../font/Noto_Sans_KR/NotoSansKR-Medium.otf') format('truetype');
+}
+@font-face {
+    font-family: 'noto-r';
+    src: url('../font/Noto_Sans_KR/NotoSansKR-Regular.otf') format('truetype');
+}
+@font-face {
+    font-family: 'noto-b';
+    src: url('../font/Noto_Sans_KR/NotoSansKR-Bold.otf') format('truetype');
+}
+
+
+*{
+    padding:0;
+    margin:0;
+    list-style:none;
+    box-sizing: border-box;
+    font-family: 'noto';
+}
+
+body{
+    color: #000;
+    margin: 0 auto;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.71;
+    letter-spacing: -0.04em;
+    background-color: #ffffff;
+    font-family: 'noto-r';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+a,a:hover,a:active,a:after{
+    cursor:pointer;
+    display: inline-block;
+    text-decoration:none;
+    color:#000;
+}
+
+.container{
+    padding:0;
+    margin:0 auto;
+    max-width: 1200px;
+    min-width: 900px;
+}
+
+::placeholder{font-size: 12px;}
+
+.btn-info{
+    background-color: #35627B;
+    color: #F7F3F4;
+    border: 1px solid #222;
+}
+.btn-info:hover{background-color: #2c4c5c;}
+.container > .card-title {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.container > .card-title > a > img{width: 370px;}
+.container > .card-body > .form-signin > div{margin: 20px auto;}
+.container > .card-body > .form-signin > div > p{
+    font-size: 15px;
+    font-weight: 700;
+    color: rgb(85, 81, 81);
+}
+
+
+
+/* 위치값 잡아주기 */
+.region_select{display: flex; justify-content: center; align-items: center; border: 1px solid black;}
+.region1 > a{ color: black;}
+.region1{border: 1px solid black; border-bottom: 0; padding: 5px 3px;}
+.button_box{border: 1px solid black; display: flex; justify-content: center; align-items: center;  text-align: center;}
+.button_box > button{margin: 20px; padding: 10px 15px; border: none; border-radius: 10px; background-color:lightblue;}
+
+
+header{
+    width:100%;
+    background-color: #FAC171;
+}
+    .align{display: flex;justify-content: space-between;}
+        .logo{width:200px;height:100px;line-height:50px;}
+    .navbar li{width:100px;text-align: end;}
+    .navbar li a{color:#fff;font-weight: 600;}
+
+
+footer{
+    width:100%;
+    padding:4px 0 25px;
+    background-color:#35627B;
+}
+
+    .footer-align{display:flex; justify-content:space-between; margin:25px 0; }
+        .left_box{height:80px;display: flex;flex-direction: column;}
+            .left_box_top{display: flex;align-items: center;margin-bottom:10px;}
+                .company_logo{margin-right:20px;}
+                .agreement_list{display:flex;}
+                .agreement_list li{margin-right:20px;border-right:1px solid #999;}
+                .agreement_list li:last-child{border:none;}
+                .agreement_list li a{margin-right:20px;}
+            .left_box_bottom{display:flex;width:700px;white-space:normal;}
+                .left_box_bottom li{display:inline-block;font-size: 13px;color:#757575;margin-right:10px;}
+            .copy{text-align: center;}
+        .right_box{background-color: #fff;width:20%;height:200px;padding:10px;}
+            .right_box li{font-weight: 500;}
+            .right_box li:nth-child(2){margin-bottom:35px;}
+
+

@@ -1,0 +1,36 @@
+/*
+    index페이지에 들어가는 css파일
+*/
+
+.silde{overflow:hidden;width:1200px;}
+.silde{height:700px;width:100%;display: flex;}
+.silde li{width:100%;height:100%;position:relective;}
+.silde li img{width:100%;height:100%;}
+
+.thema_list{width:100%;}
+.thema_list li {width:25%;display: flex;justify-content: center;align-items: center;text-align: center;}
+.thema_list a {display: inline-block;}
+
+    .searchbar{padding:10px 50px;}
+
+.icon_box{
+    width:100px;height:100px;
+    margin-bottom:3px;
+    border-radius:50%;
+    background-color: beige;
+    text-align:center;
+}
+	.icon_box i{font-size:40px;line-height:100px;}
+
+.bestbar{background:lightcyan;padding:35px;border-top:1px solid lightblue;border-bottom:1px solid lightblue;}
+	.best{display: flex;justify-content: space-between;height:250px;}
+		.best_camping{whidth:100%;height:100%;}
+		.best_camping a{width:100%;height:100%;}
+		.card-img-top{width:100%;height:100%;}
+		.camping_name{position:absolute;z-index:10;left:0;bottom:0;height:50px;width:100%;background-color: #333;opacity:0.8;color:#f7f4f3;text-align:center;line-height:50px;font-size:16px;}
+
+#thema_category{padding:25px 0;}
+    .thema_best > h5 {color:black; margin:0px 0px 20px;}
+    .thema_best_list{display:flex;justify-content:space-between; width:100%;padding:10px 0;}
+    .thema_best_list li{width:25%;height:100%;text-align: center;}
+    .thema_best_list li a img{width:250px;height:330px;}

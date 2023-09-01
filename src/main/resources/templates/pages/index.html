@@ -7,27 +7,181 @@
       layout:fragment="Content"
 >
     <head>
-        <title>테스트 페이지</title>
-
+        <title>YOLO Camping</title>
         <!-- inline CSS 영역-->
-        <style th:inline="css" type="text/css">
-                body {
-                    margin: 30px;
-                    border: 1px solid red;
-                }
-            </style>
+        <link th:inline="css" th:href="@{/css/index.css}" rel="stylesheet" />
 
         <!-- inline JS 영역-->
-        <script th:inline="javascript" type="text/javascript">
-                $(document).ready(() => {
-                    alert("페이지가 시작됩니다.")
-                });
-            </script>
+        <script th:inline="javascript" type="text/javascript"> </script>
     </head>
 
     <body>
-        <div>
-            <h1>Content 영역입니다.</h1>
-        </div>
+
+        <section class="container">
+            <div class="silde-box">
+                <ul class="silde">
+                    <li>
+                        <img th:src="@{/image/yolo_company/event/event01.jpg}" />
+                        <img th:src="@{/image/yolo_company/event/event02.jpg}" />
+                        <img th:src="@{/image/yolo_company/event/event03.jpg}" />
+                        <img th:src="@{/image/yolo_company/event/event04.png}" />
+                        <img th:src="@{/image/yolo_company/event/event05.jpg}" />
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="container">
+            <form action="camping.search" class="searchform">
+                <div class="searchbar row">
+                    <select name="camping_area" class="form-control col-3">
+                        <option value="전국">전국</option>
+                        <option value="서울">서울특별시</option>
+                        <option value="대전">대전광역시</option>
+                        <option value="대구">대구광역시</option>
+                        <option value="부산">부산광역시</option>
+                        <option value="광주">광주광역시</option>
+                        <option value="경기">경기도</option>
+                        <option value="경남">경상남도</option>
+                        <option value="경북">경상북도</option>
+                        <option value="전남">전라남도</option>
+                        <option value="전북">전라북도</option>
+                        <option value="충남">충청남도</option>
+                        <option value="충븍">충청븍도</option>
+                        <option value="강원">강원도</option>
+                        <option value="제주">제주특별자치도</option>
+                    </select>
+
+                    <span class="ml-1 mr-1">입 / 퇴실일</span>
+                    <input type="date" name="checkin" id="in" class="form-control col-2" onchange="datecheck()" >
+                    <input type="date" name="checkout" id="out" class="form-control col-2" onchange="datecheck()" >
+                    <input type="submit" value="확인" class="btn button col-2">
+
+                    <script>
+                        var today=new Date();
+                        document.getElementById('in').valueAsDate = today;
+                        var tomorrow =new Date(today.setDate(today.getDate()+1));
+                        document.getElementById('out').valueAsDate = tomorrow;
+                    </script>
+                </div>
+            </form>
+        </section>
+
+        <section class="container">
+            <ul class="thema_list row">
+                <li >
+                    <a href="option.search?camping_type=glamping">
+                        <div class="icon_box"><i class="fas fa-campground"></i></div>
+                        <div>글램핑</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="option.search?camping_type=caravan">
+                        <div class="icon_box"><i class="fas fa-caravan"></i></div>
+                        <div>카라반</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="option.search?camping_type=auto">
+                        <div class="icon_box"><i class="fas fa-hiking"></i></div>
+                        <div>오토캠핑</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="option.search?camping_type=pet">
+                        <div class="icon_box"><i class="fas fa-paw"></i></div>
+                        <div>반려동물</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="option.search?camping_theme=forest">
+                        <div class="icon_box"><i class="fa-solid fa-tree"></i></div>
+                        <div>산/숲속</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="option.search?camping_theme=river">
+                        <div class="icon_box"><i class="fa-solid fa-water"></i></div>
+                        <div>강/호수</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="option.search?camping_theme=sea">
+                        <div class="icon_box"><i class="fa-solid fa-anchor"></i></div>
+                        <div>해안가/섬</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="option.search?camping_theme=city">
+                        <div class="icon_box"><i class="fa-solid fa-city"></i></div>
+                        <div>도심지</div>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <section class="container bestbar">
+            <div class="thema_best">
+                <h5>추천 캠핑장</h5>
+                <div class="best" >
+                    <div class="card best_camping">
+                        <a href="./search/camping.jsp?">
+                            <img th:src="@{/image/camping_product/camping01.png}" alt="캠핑장메인사진" class="card-img-top"  />
+                            <div class="camping_name">이름이름이름</div>
+                        </a>
+                    </div>
+                    <div class="card best_camping">
+                        <a href="./search/camping.jsp?">
+                            <img th:src="@{/image/camping_product/camping02.jpg}" alt="캠핑장메인사진" class="card-img-top"  />
+                            <div class="camping_name">이름이름이름</div>
+                        </a>
+                    </div>
+                    <div class="card best_camping">
+                        <a href="./search/camping.jsp?">
+                            <img th:src="@{/image/camping_product/camping02.jpg}" alt="캠핑장메인사진" class="card-img-top"  />
+                            <div class="camping_name">이름이름이름</div>
+                        </a>
+                    </div>
+                    <div class="card best_camping">
+                        <a href="./search/camping.jsp?">
+                            <img th:src="@{/image/camping_product/camping01.png}" alt="캠핑장메인사진" class="card-img-top"  />
+                            <div class="camping_name">이름이름이름</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--
+        <section id="thema_category">
+            <div class="container">
+                <div class="thema_best">
+                    <h5>테마별 추천지</h5>
+                    <ul class="thema_best_list">
+                        <li>
+                            <a href="option.search?camping_thema=sea">
+                                <img th:src="@{/image/special_01.jpg}">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="option.search?camping_thema=forest">
+                                <img th:src="@{/image/special_02.jpg}">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="option.search?camping_thema=river">
+                                <img th:src="@{/image/special_032.jpg}">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="option.search?camping_thema=city">
+                                <img th:src="@{/image/special_042.jpg}">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        -->
     </body>
 </html>

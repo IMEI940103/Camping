@@ -1,0 +1,22 @@
+.camping_search{width:100%;padding:35px 0;}
+    .camping_search > h4 {padding-bottom:35px;color: #0e0e0e;font-weight: 600;}
+    .form-box{border:1px solid lightgrey;border-radius: 5px;display: flex;justify-content: space-around;}
+        .form-group{margin:10px 0px;}
+            .form-group label{width:100px;}
+            .form-group :nth-child(2){width:250px;}
+        .form-box input[type="submit"]{display: block; width:50%;margin:20px auto 10px;}
+.camping_result{}
+    .camping_result h4{border-bottom:1px solid #0e0e0e;padding-bottom:10px;}
+    .camping_result h4 span{font-size: 15px;}
+    .camping_result h4 span span{color:orange;}
+
+    .card{padding:20px 10px;border-width:1px 0px;}
+    .card-text span{font-size: 15px;color:#000;}
+    .card-text span:first-child{margin-right:35px;}
+    .card-text span i{color:cadetblue;font-size: 17px;margin-right:15px}
+    .card-text span:last-child i{transform:rotateY(180deg);}
+
+    ul.card-text{display:flex;justify-content:start;margin-top:40px;background-color:white;padding:5px;}
+    ul.card-text li{width:70px;height:70px;border-radius: 50%;background-color:beige;margin:10px 10px 10px 0;text-align: center;line-height:70px;}
+.paging{display: flex;justify-content: center;}
+    .page-count{display: flex;justify-content: center;}

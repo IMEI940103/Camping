@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/layout/defaultLayout}"
+      layout:fragment="Content"
+>
+    <head>
+        <meta charset="UTF-8">
+        <link th:inline="css" th:href="/css/service/booking.css" rel="stylesheet"/>
+        <title>예약하기</title>
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="box">
+                <form action="service.page" class="row" name="Form" method="post">
+                    <input type="hidden" name="booking_startday" value="" />
+                    <input type="hidden" name="booking_endday" value="" />
+                    <input type="hidden" name="booking_stayday" value="" />
+                    <input type="hidden" name="booking_room_no" value="" />
+                    <div class="left-box col-md-6">
+                        <h6>예약자 정보</h6>
+                        <div class="form-group">
+                            <label> 예약자 이름 </label>
+                            <input type="text" class="form-control" id="booking_name" name="booking_name" value="" placeholder="체크인시 필요한 정보입니다." />
+                        </div>
+                        <div class="form-group">
+                            <label> 휴대폰 번호 </label>
+                            <input type="text" class="form-control" id="booking_phone" name="booking_phone" value="" placeholder="체크인시 필요한 정보입니다." />
+                        </div>
+                        <h6>결제수단 선택</h6>
+                        <div class="form-group">
+                            <select class="form-control" name="booking_payment">
+                                <option value="card">신용/체크카드</option>
+                                <option value="samsungpay">삼성페이</option>
+                                <option value="naverpay">네이버페이</option>
+                                <option value="kakaopay">카카오페이</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="con1">숙소이용규칙 및 취소 / 환불규정동의
+                                </label>
+                            </div>
+
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="con2">개인정보수집 및 이용동의
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="con3">개인정보 제 3자 제공동의
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" id="con4">만 14세 이상 확인
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-box col-md-6">
+                        <div class="right-reserve-box">
+                            <div class="text">
+                                <h6>캠핑장 명</h6>
+                                <input type="hidden" id="camping_name" name="camping_name" value="<%=room.getCamping_name() %>" />
+                                <p><%=room.getCamping_name() %></p>
+                                <h6>객실명</h6>
+                                <p><%=room.getRoom_name()%> /</p>
+                                <h6>체크인 / 체크아웃 날짜</h6>
+                                <p><%=startday %>&nbsp;&nbsp;~&nbsp;&nbsp;<%=endday %> / <%=stayday%>박</p>
+                                <h6>인원수</h6>
+                                <p><%=people%>&nbsp;명</p>
+                            </div>
+                            <div class="total">
+                                <h6>총 결제금액(VAT포함)</h6>
+                                <input type="hidden" name="booking_price" value="<%=price %>" />
+                                <strong>가격 ( <%=money%> 원)</strong>
+                                <ul>
+                                    <li>해당 객실가는 세금,봉사료가 포함된 금액입니다.</li>
+                                    <li>결제완료 후 예약자 이름으로 바로 체크인 하시면 됩니다.</li>
+                                </ul>
+                                <input type="button" onclick="check()" class="btn col-12 button" value="결제하기" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+
+    <script th:inline="javascript" th:type="text/javascript" th:src="/js/booking.js" />
+
+</html>
