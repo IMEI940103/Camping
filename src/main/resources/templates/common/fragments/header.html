@@ -1,7 +1,7 @@
 <!-- header.html header영역의 화면구성 -->
 <!DOCTYPE html>
 <!-- Thymeleaf 선언 / headerFragment 임을 선언-->
-<html lang="ko" xmlns:th="http://www.thymeleaf.org" th:fragment="HeaderFragment">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"  th:fragment="HeaderFragment">
 
   <div class="container" id="header">
     <div class="align">
@@ -11,7 +11,15 @@
         </a>
       </div>
       <ul class="navbar">
-        <li th:if="${user_dto == null}"><a href="">로그인</a></li>
+        <li th:if="${userName}==null"><a href="/login">로그인</a></li>
+        <th:block th:if="${userName}!=null">
+          <li>
+            <a href="">마이페이지</a>
+          </li>
+          <li>
+            <a href="/logout">로그아웃</a>
+          </li>
+        </th:block>
       </ul>
     </div>
   </div>

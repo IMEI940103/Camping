@@ -11,15 +11,17 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name="USER_INFO")
-public class User {
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long user_no;
 
+    @Column
     private String user_name;
+    @Column
     private String user_email;
+    @Column
     private String user_phone;
 
     @Enumerated(EnumType.STRING)
@@ -28,17 +30,29 @@ public class User {
     @Enumerated(EnumType.STRING)
     private ProviderType providerType; // sns분류
 
-    private String categorize;
+    //private String categorize;
 
 
     @Builder
-    public User(String user_name, String user_email, String user_phone, RoleType roleType, ProviderType providerType, String categorize){
+    public Users(String user_name, String user_email, String user_phone, RoleType roleType, ProviderType providerType, String categorize){
         this.user_name = user_name;
         this.user_email = user_email;
         this.user_phone = user_phone;
         this.roleType = roleType;
         this.providerType = providerType;
-        this.categorize = categorize;
+        //this.categorize = categorize;
+    }
+
+    public String getRoleType(){
+        return this.roleType.getDisplayName();
+    }
+
+    public Users update(String name, String phone){
+
+        this.user_name = name;
+        this.user_phone = phone;
+
+        return this;
     }
 
 }
