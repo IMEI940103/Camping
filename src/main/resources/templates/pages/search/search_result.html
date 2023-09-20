@@ -66,11 +66,11 @@
                             </div>
 
                             <script>
-                            var today=new Date();
-                            document.getElementById('in').valueAsDate = today;
-                            var tomorrow =new Date(today.setDate(today.getDate()+1));
-                            document.getElementById('out').valueAsDate = tomorrow;
-                        </script>
+                                var today=new Date();
+                                document.getElementById('in').valueAsDate = today;
+                                var tomorrow =new Date(today.setDate(today.getDate()+1));
+                                document.getElementById('out').valueAsDate = tomorrow;
+                            </script>
 
                             <input type="submit" value="검색" class="btn btn-secondary" />
                         </form>
@@ -91,7 +91,7 @@
                                 <div class="row g-0">
                                     <div class="col-md-4">
                                         <a href="choice.search?camping_no=<%=info.getCamping_no()%>&start=<%=start%>&end=<%=end%>&people=<%=people%>">
-                                            <img src="http://localhost:8080/Team_Project/resource/image/camping/<%=imgs[0]%>"  class="img-fluid rounded-start" />
+                                            <img th:src="@{'/image/camping_product/' + ${camping.camping_no} + '/camping/' + ${camping.camping_img} }"  class="img-fluid rounded-start" />
                                         </a>
                                     </div>
                                     <div class="col-md-8">
@@ -108,7 +108,7 @@
                                             </a>
                                             <ul class="card-text row">
                                                 <li>
-                                                    <img src="http://localhost:8080/Team_Project/resource/icon/ico_<%=icons%>.png" />
+                                                    <img th:src="" />
                                                 </li>
                                             </ul>
                                         </div>

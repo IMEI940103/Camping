@@ -48,6 +48,7 @@ a,a:hover,a:active,a:after{
     cursor:pointer;
     display: inline-block;
     text-decoration:none;
+    text-decoration-line:none;
     color:#000;
 }
 

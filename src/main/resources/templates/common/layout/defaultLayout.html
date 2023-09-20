@@ -6,16 +6,21 @@
   <!--공통 JS / CSS 영역을 관리하는 환경 영역-->
   <head th:replace="common/fragments/config :: ConfigFragment">
     <title layout:title-pattern="$LAYOUT_TITLE : $CONTENT_TITLE">YOLO Camping</title>
+    <link th:inline="css" th:href="@{/css/common.css}" rel="stylesheet" />
   </head>
   <body>
     <!--Header 영역을 참조합니다.-->
-    <header th:replace="common/fragments/header :: HeaderFragment"></header>
+    <header>
+      <th:block th:replace="common/fragments/header :: HeaderFragment"></th:block>
+    </header>
 
     <!--Content 내용 영역을 참조합니다-->
     <th:block layout:fragment="Content"></th:block>
 
     <!--Footer 영역을 참조합니다.-->
-    <footer th:replace="common/fragments/footer :: FooterFragment"></footer>
+    <footer>
+      <th:block th:replace="common/fragments/footer :: FooterFragment"></th:block>
+    </footer>
 
   </body>
 </html>
