@@ -33,11 +33,16 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
         String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName();
 
+
+        //네이버 - response 구글 - sub
+
         OAuth2Attributes attributes = OAuth2Attributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
         Users users = saveOrUpdate(attributes);
 
         httpSession.setAttribute("user", new SessionUser(users));
+
+        System.out.println(attributes.getAttributes());
 
         return new DefaultOAuth2User(
                 Collections.singleton(
@@ -49,8 +54,11 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     }
 
     private Users saveOrUpdate(OAuth2Attributes attributes){
-        Users users = userRepository.findByUser_Email((attributes.getUser_email()))
-                .map(entity -> entity.update(attributes.getUser_name(), attributes.getUser_phone()))
+        System.out.println();
+        System.out.println(attributes.getProviderType());
+        System.out.println();
+        Users users = userRepository.findByUserEmailAndProviderType(attributes.getUserEmail(), attributes.getProviderType())
+                .map(entity -> entity.update(attributes.getUserName(), attributes.getUserPhone()))
                 .orElse(attributes.toEntity()); // orElse() Optional클래스 사용시 지정했던 객체를 받아서 그대로 return 한다.
         return userRepository.save(users);
     }

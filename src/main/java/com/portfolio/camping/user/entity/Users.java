@@ -15,43 +15,35 @@ public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_no;
-
+    private Long userNo;
     @Column
-    private String user_name;
+    private String userName;
     @Column
-    private String user_email;
+    private String userEmail;
     @Column
-    private String user_phone;
+    private String userPhone;
 
     @Enumerated(EnumType.STRING)
     private RoleType roleType; // 사용자 권한
 
-    @Enumerated(EnumType.STRING)
-    private ProviderType providerType; // sns분류
-
-    //private String categorize;
-
+    private String providerType; // sns분류
 
     @Builder
-    public Users(String user_name, String user_email, String user_phone, RoleType roleType, ProviderType providerType, String categorize){
-        this.user_name = user_name;
-        this.user_email = user_email;
-        this.user_phone = user_phone;
+    public Users(String userName, String userEmail, String userPhone, RoleType roleType, String providerType){
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.userPhone = userPhone;
         this.roleType = roleType;
         this.providerType = providerType;
-        //this.categorize = categorize;
     }
 
     public String getRoleType(){
         return this.roleType.getDisplayName();
     }
 
-    public Users update(String name, String phone){
-
-        this.user_name = name;
-        this.user_phone = phone;
-
+    public Users update(String userName, String userPhone){
+        this.userName = userName;
+        this.userPhone = userPhone;
         return this;
     }
 

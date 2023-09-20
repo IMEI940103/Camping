@@ -31,7 +31,7 @@ public class IndexController {
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
 
         if(user != null){
-            model.addAttribute("userName",user.getUser_name());
+            model.addAttribute("userName",user.getUserName());
         }
 
         return "pages/index";
